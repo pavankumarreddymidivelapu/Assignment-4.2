@@ -1,0 +1,26 @@
+<div>
+    <h2>Player Management</h2>
+  
+    <div>
+      <h3>Add Player</h3>
+      <form (submit)="addPlayer()">
+        <label>Name:</label>
+        <input [(ngModel)]="newPlayer.name" name="name" required>
+        <label>Score:</label>
+        <input type="number" [(ngModel)]="newPlayer.score" name="score" required>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+  
+    <div *ngIf="players && players.length > 0">
+      <h3>Players</h3>
+      <ul>
+        <li *ngFor="let player of players">
+          {{ player.name }} - {{ player.score }}
+          <button (click)="updatePlayer(player._id, { name: 'Updated Name', score: player.score + 1 })">Update</button>
+          <button (click)="deletePlayer(player._id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
